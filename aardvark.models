@@ -1,49 +1,47 @@
-Arduino Yun
-Arduino Yun Mini
-Arduino Uno
-Arduino Uno WiFi
-Arduino Duemilanove
-Arduino Diecimila
-Arduino Duemilanove atmega328p
-Arduino Diecimila atmega328p
-Arduino Duemilanove atmega168
-Arduino Diecimila atmega168
-Arduino Nano
-Arduino Nano atmega328p
-Arduino Nano atmega168
-Arduino Mega
-Arduino Mega 2560
-Arduino Mega 1280
-Arduino Mega ADK
-Arduino Leonardo
-Arduino Leonardo ETH
-Arduino Micro
-Arduino Esplora
-Arduino Mini
-Arduino Mini atmega328p
-Arduino Mini atmega168
-Arduino Ethernet
-Arduino Fio
-Arduino BT
-Arduino BT atmega328p
-Arduino BT atmega168
-Arduino Lilypad USB
-Arduino Lilypad
-Arduino Lilypad atmega328p
-Arduino Lilypad atmega168
-Arduino Pro
-Arduino Pro Mini
-Arduino Pro 16Mhz atmega328p
-Arduino Pro Mini 16Mhz atmega328p
-Arduino Pro 8Mhz atmega328p
-Arduino Pro Mini 8Mhz atmega328p
-Arduino Pro 16Mhz atmega168
-Arduino Pro Mini 16Mhz atmega168
-Arduino Pro 8Mhz atmega168
-Arduino Pro Mini 8Mhz atmega168
-Arduino NG
-Arduino NG atmega168
-Arduino NG atmega8
-Arduino Robot Control
-Arduino Robot Motor
+Arduino Uno | 115200 atmega328p 32256 2048
+Arduino Uno WiFi | 115200 atmega328p 32256 2048
+Arduino Duemilanove | 19200 atmega168 30720 2048
+Arduino Diecimila | 19200 atmega168 30720 2048
+Arduino Duemilanove atmega328p | 57600 atmega328p 30720 2048
+Arduino Diecimila atmega328p | 57600 atmega328p 30720 2048
+Arduino Duemilanove atmega168 | 19200 atmega168 30720 2048
+Arduino Diecimila atmega168 | 19200 atmega168 30720 2048
+Arduino Nano | 57600 atmega328p 30720 2048
+Arduino Nano atmega328p | 57600 atmega328p 30720 2048
+Arduino Nano atmega168 | 19200 atmega168 14336 1024
+Arduino Mega | 115200 atmega1280 126976
+Arduino Mega 2560 | 115200 atmega2560 253952
+Arduino Mega 1280 | 115200 atmega1280 126976
+Arduino Mega ADK | 115200 atmega2560 253952 8192
+Arduino Leonardo | 57600 atmega32u4 28672 2560
+Arduino Leonardo ETH | 57600 atmega32u4 28672 2560
+Arduino Micro | 57600 atmega32u4 28672 2560
+Arduino Esplora | 57600 atmega32u4 28672 2560
+Arduino Mini | 115200 atmega328p 28672 2048
+Arduino Mini atmega328p | 115200 atmega328p 28672 2048
+Arduino Mini atmega168 | 19200 atmega168 14336 1024
+Arduino Ethernet | 115200 atmega328p 32256 2048
+Arduino Fio | 57600 atmega328p 30720 2048
+Arduino BT | 19200 atmega328p 28672 2048
+Arduino BT atmega328p | 19200 atmega328p 28672 2048
+Arduino BT atmega168 | 19200 atmega168 14336 1024
+Arduino Lilypad USB | 57600 atmega32u4 28672 2560
+Arduino Lilypad | 57600 atmega328p 30720 2048
+Arduino Lilypad atmega328p | 57600 atmega328p 30720 2048
+Arduino Lilypad atmega168 | 19200 atmega168 14336 1024
+Arduino Pro | 57600 atmega328p 30720 204
+Arduino Pro Mini | 57600 atmega328p 30720 2048
+Arduino Pro 16Mhz atmega328p | 57600 atmega328p 30720 2048
+Arduino Pro Mini 16Mhz atmega328p | 57600 atmega328p 30720 204
+Arduino Pro 8Mhz atmega328p | 57600 atmega328p 30720 204
+Arduino Pro Mini 8Mhz atmega328p | 57600 atmega328p 30720 204
+Arduino Pro 16Mhz atmega168 | 19200 atmega168 14336 1024
+Arduino Pro Mini 16Mhz atmega168 | 19200 atmega168 14336 1024
+Arduino Pro 8Mhz atmega168 | 19200 atmega168 14336 1024
+Arduino Pro Mini 8Mhz atmega168 | 19200 atmega168 14336 1024
+Arduino NG | 115200 atmega168 14336 1024
+Arduino NG atmega168 | 115200 atmega168 14336 102
+Arduino NG atmega8 | 115200 atmega8 7168 102
+Arduino Robot Control | 57600 atmega32u4 28672 2560
+Arduino Robot Motor | 57600 atmega32u4 28672 2560
 Arduino Gemma
