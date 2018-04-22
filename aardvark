@@ -4,6 +4,9 @@ set -e
 
 aardir=$(dirname $(readlink -f $0))
 tools=$(cat "$aardir/aardvark.test")
+ACC=$(echo "$tools" | awk -F '|' '{print $1}')
+AOC=$(echo "$tools" | awk -F '|' '{print $2}')
+AD=$(echo "$tools" | awk -F '|' '{print $3}')
 
 help() {
   echo 'Help - Aardvark v0.0'
@@ -29,6 +32,10 @@ if [ "$1" = 'listmodel' ]; then
   cat "$aardir/aardvark.models" | awk -F '|' '{print $1}'
   exit 0
 fi
+
+echo "Using compiler: $ACC"
+echo "Using objcopy: $AOC"
+echo "Using uploader: $AD"
 
 # check if matches line in .models
 
