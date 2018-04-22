@@ -1,0 +1,38 @@
+#!/bin/sh
+
+set -e
+
+aardir=$(dirname $(readlink -f $0))
+source "$aardir/aardvark.test"
+
+#Error codes
+NOMODEL=100
+INVALIDMODEL=101
+
+if [ -z "$1" ]; then
+  echo 'Please provide a model or command.' 1>&2
+  exit $NOMODEL
+fi
+
+case "$1" in
+  'listmodel')
+    echo 'Arduino Uno'
+    echo 'Arduino Nano'
+    echo 'Arduino Pro'
+    echo 'Arduino Pro Mini'
+    exit 0
+  ;;
+  'Arduino Uno') MODEL="$1"
+  ;;
+  'Arduino Nano') MODEL="$1"
+  ;;
+  'Arduino Pro') MODEL="$1"
+  ;;
+  'Arduino Pro Mini') MODEL="$1"
+  ;;
+esac
+
+if [ -z "$MODEL" ]; then
+  echo 'Model is not supported. (Check [aardvark listmodel])' 1>&2
+  exit $INVALIDMODEL
+fi
