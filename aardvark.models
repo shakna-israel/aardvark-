@@ -1,49 +1,49 @@
-'Arduino Yun'
-'Arduino Yun Mini'
-'Arduino Uno'
-'Arduino Uno WiFi'
-'Arduino Duemilanove'
-'Arduino Diecimila'
-'Arduino Duemilanove atmega328p'
-'Arduino Diecimila atmega328p'
-'Arduino Duemilanove atmega168'
-'Arduino Diecimila atmega168'
-'Arduino Nano'
-'Arduino Nano atmega328p'
-'Arduino Nano atmega168'
-'Arduino Mega'
-'Arduino Mega 2560'
-'Arduino Mega 1280'
-'Arduino Mega ADK'
-'Arduino Leonardo'
-'Arduino Leonardo ETH'
-'Arduino Micro'
-'Arduino Esplora'
-'Arduino Mini'
-'Arduino Mini atmega328p'
-'Arduino Mini atmega168'
-'Arduino Ethernet'
-'Arduino Fio'
-'Arduino BT'
-'Arduino BT atmega328p'
-'Arduino BT atmega168'
-'Arduino Lilypad USB'
-'Arduino Lilypad'
-'Arduino Lilypad atmega328p'
-'Arduino Lilypad atmega168'
-'Arduino Pro'
-'Arduino Pro Mini'
-'Arduino Pro 16Mhz atmega328p'
-'Arduino Pro Mini 16Mhz atmega328p'
-'Arduino Pro 8Mhz atmega328p'
-'Arduino Pro Mini 8Mhz atmega328p'
-'Arduino Pro 16Mhz atmega168'
-'Arduino Pro Mini 16Mhz atmega168'
-'Arduino Pro 8Mhz atmega168'
-'Arduino Pro Mini 8Mhz atmega168'
-'Arduino NG'
-'Arduino NG atmega168'
-'Arduino NG atmega8'
-'Arduino Robot Control'
-'Arduino Robot Motor'
-'Arduino Gemma'
+Arduino Yun
+Arduino Yun Mini
+Arduino Uno
+Arduino Uno WiFi
+Arduino Duemilanove
+Arduino Diecimila
+Arduino Duemilanove atmega328p
+Arduino Diecimila atmega328p
+Arduino Duemilanove atmega168
+Arduino Diecimila atmega168
+Arduino Nano
+Arduino Nano atmega328p
+Arduino Nano atmega168
+Arduino Mega
+Arduino Mega 2560
+Arduino Mega 1280
+Arduino Mega ADK
+Arduino Leonardo
+Arduino Leonardo ETH
+Arduino Micro
+Arduino Esplora
+Arduino Mini
+Arduino Mini atmega328p
+Arduino Mini atmega168
+Arduino Ethernet
+Arduino Fio
+Arduino BT
+Arduino BT atmega328p
+Arduino BT atmega168
+Arduino Lilypad USB
+Arduino Lilypad
+Arduino Lilypad atmega328p
+Arduino Lilypad atmega168
+Arduino Pro
+Arduino Pro Mini
+Arduino Pro 16Mhz atmega328p
+Arduino Pro Mini 16Mhz atmega328p
+Arduino Pro 8Mhz atmega328p
+Arduino Pro Mini 8Mhz atmega328p
+Arduino Pro 16Mhz atmega168
+Arduino Pro Mini 16Mhz atmega168
+Arduino Pro 8Mhz atmega168
+Arduino Pro Mini 8Mhz atmega168
+Arduino NG
+Arduino NG atmega168
+Arduino NG atmega8
+Arduino Robot Control
+Arduino Robot Motor
+Arduino Gemma
