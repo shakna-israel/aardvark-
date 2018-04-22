@@ -5,77 +5,23 @@ set -e
 aardir=$(dirname $(readlink -f $0))
 source "$aardir/aardvark.test"
 
+help() {
+
+}
+
 #Error codes
-NOMODEL=100
-INVALIDMODEL=101
+INVALIDMODEL=100
 
 if [ -z "$1" ]; then
-  echo 'Please provide a model or command.' 1>&2
-  exit $NOMODEL
+  help
 fi
 
-case "$1" in
-  'listmodel')
-    echo 'Arduino Yun'
-    echo 'Arduino Yun Mini'
-    echo 'Arduino Uno'
-    echo 'Arduino Uno WiFi'
-    echo 'Arduino Duemilanove'
-    echo 'Arduino Diecimila'
-    echo 'Arduino Duemilanove atmega328p'
-    echo 'Arduino Diecimila atmega328p'
-    echo 'Arduino Duemilanove atmega168'
-    echo 'Arduino Diecimila atmega168'
-    echo 'Arduino Nano'
-    echo 'Arduino Nano atmega328p'
-    echo 'Arduino Nano atmega168'
-    echo 'Arduino Mega'
-    echo 'Arduino Mega 2560'
-    echo 'Arduino Mega 1280'
-    echo 'Arduino Mega ADK'
-    echo 'Arduino Leonardo'
-    echo 'Arduino Leonardo ETH'
-    echo 'Arduino Micro'
-    echo 'Arduino Esplora'
-    echo 'Arduino Mini'
-    echo 'Arduino Mini atmega328p'
-    echo 'Arduino Mini atmega168'
-    echo 'Arduino Ethernet'
-    echo 'Arduino Fio'
-    echo 'Arduino BT'
-    echo 'Arduino BT atmega328p'
-    echo 'Arduino BT atmega168'
-    echo 'Arduino Lilypad USB'
-    echo 'Arduino Lilypad'
-    echo 'Arduino Lilypad atmega328p'
-    echo 'Arduino Lilypad atmega168'
-    echo 'Arduino Pro'
-    echo 'Arduino Pro Mini'
-    echo 'Arduino Pro 16Mhz atmega328p'
-    echo 'Arduino Pro Mini 16Mhz atmega328p'
-    echo 'Arduino Pro 8Mhz atmega328p'
-    echo 'Arduino Pro Mini 8Mhz atmega328p'
-    echo 'Arduino Pro 16Mhz atmega168'
-    echo 'Arduino Pro Mini 16Mhz atmega168'
-    echo 'Arduino Pro 8Mhz atmega168'
-    echo 'Arduino Pro Mini 8Mhz atmega168'
-    echo 'Arduino NG'
-    echo 'Arduino NG atmega168'
-    echo 'Arduino NG atmega8'
-    echo 'Arduino Robot Control'
-    echo 'Arduino Robot Motor'
-    echo 'Arduino Gemma'
-    exit 0
-  ;;
-  'Arduino Uno') MODEL="$1"
-  ;;
-  'Arduino Nano') MODEL="$1"
-  ;;
-  'Arduino Pro') MODEL="$1"
-  ;;
-  'Arduino Pro Mini') MODEL="$1"
-  ;;
-esac
+if [ "$1" = 'listmodel' ]; then
+  cat "$aardir/aardvark.models"
+  exit 0
+fi
+
+# check if matches line in .models
 
 if [ -z "$MODEL" ]; then
   echo 'Model is not supported. (Check [aardvark listmodel])' 1>&2
