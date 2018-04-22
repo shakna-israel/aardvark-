@@ -72,3 +72,5 @@ if [ -z "$AD" ]; then
   echo 'Could not find avrdude. Is it installed?' 1>&2
   exit $NODUDE
 fi
+
+echo "$ACC|$ADC|$AD"

@@ -3,16 +3,25 @@
 set -e
 
 aardir=$(dirname $(readlink -f $0))
-source "$aardir/aardvark.test"
+tools=$(cat "$aardir/aardvark.test")
 
 help() {
-
+  echo 'Help - Aardvark v0.0'
+  echo '===================='
+  echo ''
+  echo 'aardvark listmodel | Show supported devices.'
+  echo 'aardvark --help | Show this message.'
+  exit 0
 }
 
 #Error codes
 INVALIDMODEL=100
 
 if [ -z "$1" ]; then
+  help
+fi
+
+if [ "$1" = "--help" ]; then
   help
 fi
 
