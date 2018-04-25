@@ -44,4 +44,3 @@ Arduino NG atmega168 | 115200 atmega168 14336 102
 Arduino NG atmega8 | 115200 atmega8 7168 102
 Arduino Robot Control | 57600 atmega32u4 28672 2560
 Arduino Robot Motor | 57600 atmega32u4 28672 2560
-Arduino Gemma

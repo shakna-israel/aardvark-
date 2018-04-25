@@ -3,7 +3,7 @@
 set -e
 
 aardir=$(dirname $(readlink -f $0))
-tools=$(cat "$aardir/aardvark.test")
+tools=$(sh "$aardir/aardvark.test")
 ACC=$(echo "$tools" | awk -F '|' '{print $1}')
 AOC=$(echo "$tools" | awk -F '|' '{print $2}')
 AD=$(echo "$tools" | awk -F '|' '{print $3}')
@@ -38,6 +38,9 @@ echo "Using objcopy: $AOC"
 echo "Using uploader: $AD"
 
 # check if matches line in .models
+if grep -q "$1 |" "$aardir/aardvark.models"; then
+  MODEL="$1"
+fi
 
 if [ -z "$MODEL" ]; then
   echo 'Model is not supported. (Check [aardvark listmodel])' 1>&2
