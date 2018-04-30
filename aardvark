@@ -2,7 +2,31 @@
 
 set -e
 
-aardir=$(dirname $(readlink -f $0))
+#Error codes
+INVALIDMODEL=100
+NOREADLINK=40
+NOPROJECT=101
+INVALIDPROJECT=102
+NOPORT=103
+
+# macos compatibilities
+if [ "$(uname)" == "Darwin" ]; then
+	rlink='greadlink'
+else
+	rlink='readlink'
+fi
+
+# check readlink accessible 
+if "$rlink" --help | grep -q 'readlink'; then
+	:
+else
+	echo 'Could not access readlink.' 1>&2
+	echo '' 1>&2
+	echo 'Note: macOS users, you may need the GNU coreutils, try the homebrew or macports package managers.' 1>&2
+	exit $NOREADLINK
+fi
+
+aardir=$(dirname $($rlink -f $0))
 tools=$(sh "$aardir/aardvark.test")
 ACC=$(echo "$tools" | awk -F '|' '{print $1}')
 AOC=$(echo "$tools" | awk -F '|' '{print $2}')
@@ -14,11 +38,9 @@ help() {
   echo ''
   echo 'aardvark listmodel | Show supported devices.'
   echo 'aardvark --help | Show this message.'
+  echo 'aardvark DEVICE FILE PORT |  Compile a file for a specific board and upload.'
   exit 0
 }
-
-#Error codes
-INVALIDMODEL=100
 
 if [ -z "$1" ]; then
   help
@@ -45,4 +67,34 @@ fi
 if [ -z "$MODEL" ]; then
   echo 'Model is not supported. (Check [aardvark listmodel])' 1>&2
   exit $INVALIDMODEL
+fi
+
+modelData=$(grep "$1 |" "$aardir/aardvark.models" | awk -F '|' '{print $2}')
+baud=$(echo "$modelData" | awk '{print $1}')
+chip=$(echo "$modelData" | awk '{print $2}')
+maxSize=$(echo "$modelData" | awk '{print $3}')
+maxDataSize=$(echo "$modelData" | awk '{print $4}')
+
+
+echo "Model: $MODEL"
+echo "Baud Speed: $baud"
+echo "Chip: $chip"
+echo "Max Program Size: $maxSize"
+echo "Max Data Size: $maxDataSize"
+
+#check for project file
+if [ -z "$2" ]; then
+	echo 'No project file given.' 1>&2
+	exit $NOPROJECT
+fi
+
+if [ -f "$2" ]; then
+	echo 'Could not access project file. Do you have permission?' 1>&2
+	exit $INVALIDPROJECT
+fi
+
+#check port
+if [ -z "$3" ]; then
+	echo 'No port given.' 1>&2
+	exit $NOPORT
 fi
