@@ -1,0 +1,63 @@
+getgcc() {
+  # Find avr-gcc.
+  if [ -f '/bin/avr-gcc' ]; then
+    ACC='/bin/avr-gcc'
+  fi
+
+  if [ -f '/usr/bin/avr-gcc' ]; then
+    ACC='/usr/bin/avr-gcc'
+  fi
+
+  if [ -f '/usr/local/bin/avr-gcc' ]; then
+    ACC='/usr/local/bin/avr-gcc'
+  fi
+
+  if [ -f "$AVR_TOOLS_DIR/bin/avr-gcc" ]; then
+    ACC="$AVR_TOOLS_DIR/bin/avr-gcc"
+  fi
+
+  echo "$ACC"
+}
+
+getobjcopy() {
+  # Find avr-objcopy.
+  if [ -f '/bin/avr-objcopy' ]; then
+    AOC='/bin/avr-objcopy'
+  fi
+
+  if [ -f '/usr/bin/avr-objcopy' ]; then
+    AOC='/usr/bin/avr-objcopy'
+  fi
+
+  if [ -f '/usr/local/bin/avr-objcopy' ]; then
+    AOC='/usr/local/bin/avr-objcopy'
+  fi
+
+  if [ -f "$AVR_TOOLS_DIR/bin/avr-objcopy" ]; then
+    AOC="$AVR_TOOLS_DIR/bin/avr-objcopy"
+  fi
+
+  echo "$AOC"
+}
+
+getdude() {
+  # Find avrdude.
+  if [ -f '/bin/avrdude' ]; then
+    AD='/bin/avrdude'
+  fi
+
+  if [ -f '/usr/bin/avrdude' ]; then
+    AD='/usr/bin/avrdude'
+  fi
+
+  if [ -f '/usr/local/bin/avrdude' ]; then
+    AD='/usr/local/bin/avrdude'
+  fi
+
+  if [ -f "$AVR_TOOLS_DIR/bin/avrdude" ]; then
+    AD="$AVR_TOOLS_DIR/bin/avrdude"
+  fi
+
+  echo "$AD"
+}
+
