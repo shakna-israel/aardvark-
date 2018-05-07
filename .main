@@ -39,7 +39,25 @@ compile() {
     exit 1
   fi
 
-  #todo: gcc command
+  if [ -z "$3" ]; then
+    echo 'No outfile named.' >&2
+    echo 'Please provide one.' >&2
+    exit 1
+  fi
+
+  #getmaxsize
+  maxsize=$(getmaxsize "$1")
+  #getaxdatasize
+  datasize=$(getmaxdatasize "$1")
+  #getchip
+  chip=$(getchip "$1")
+  #use $avrgcc
+  "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000 "$2" -o "$3".bin
+  "$avrgcc" -Os -mmcu="$chip" -ffunction-sections -fdata-sections -Wl,--gc-sections "$3".bin -o "$3".elf
+  rm "$3".bin
+  # use $objcopy
+  "$objcopy" -O ihex -R .eeprom "$3".elf "$3".ihex
+  rm "$3".elf
 }
 
 flash() {

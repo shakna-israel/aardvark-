@@ -27,6 +27,8 @@ fi
 
 # Aardvark's home directory
 root=$(dirname $($rlink -f $0))
+# Working directory
+wd=$(pwd)
 
 . "$root/.help"
 
@@ -43,6 +45,7 @@ if [ "$1" == 'list' ]; then
 fi
 
 . "$root/.tools"
+. "$root/.main"
 
 if [ "$1" == 'build' ]; then
   build "$2" "$3" "$4"
