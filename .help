@@ -1,0 +1,11 @@
+help() {
+  echo 'Help - Aardvark v0.0'
+  echo '===================='
+  echo ''
+  echo 'aardvark list | Show supported devices.'
+  echo 'aardvark [--help | -h] | Show this message.'
+  echo 'aardvark build DEVICE PORT FILE | Compile & upload a file to a device'
+  echo 'aardvark compile DEVICE FILE OUTFILE |  Compile a file for a specific board.'
+  echo 'aardvark flash DEVICE PORT HEXFILE | Upload a compiled file to a device.'
+  exit 0
+}

@@ -1,0 +1,31 @@
+listmodel() {
+  cat "$root/.models" | awk -F '|' '{print $1}'
+}
+
+getmodel() {
+  if grep -q "$1 |" "$root/.models"; then
+    echo "$1"
+  else
+    echo ''
+  fi
+}
+
+getmodeldata() {
+  grep "$1 |" "$root/.models" | awk -F '|' '{print $2}'
+}
+
+getbaud() {
+  getmodeldata "$1" | awk '{print $1}'
+}
+
+getchip() {
+  getmodeldata "$1" | awk '{print $2}'
+}
+
+getmaxsize() {
+  getmodeldata "$1" | awk '{print $3}'
+}
+
+getmaxdatasize() {
+  getmodeldata "$1" | awk '{print $4}'
+}

@@ -1,0 +1,70 @@
+build() {
+  compile
+  flash
+}
+
+compile() {
+  model=$(getmodel "$1")
+  if [ -z "$model" ]; then
+    echo "Could not find model: $2" >&2
+    echo 'Confirm it can be found in `aardvark list`' >&2
+    exit 1
+  fi
+
+  avrgcc=$(getgcc)
+  if [ -z "$avrgcc" ]; then
+    echo 'Could not find avr-gcc.' >&2
+    echo 'Is it installed?' >&2
+    exit 1
+  fi
+
+  objcopy=$(getobjcopy)
+  if [ -z "$objcopy" ]; then
+    echo 'Could not find avr-objcopy.' >&2
+    echo 'Is it installed?' >&2
+    exit 1
+  fi
+
+  if [ -f "$2" ]; then
+    data=$(cat "$2")
+    if [ -z "$data" ]; then
+      echo "Read no data from file: $2" >&2
+      echo 'File needs at least some data.' >&2
+      exit 1
+    fi
+  else
+    echo "Could not access project file: $2" >&2
+    echo 'Do you have permission?' >&2
+    echo 'Does it exist?' >&2
+    exit 1
+  fi
+
+  if [ -z "$3" ]; then
+    echo 'No outfile named.' >&2
+    echo 'Please provide one.' >&2
+    exit 1
+  fi
+
+  #getmaxsize
+  maxsize=$(getmaxsize "$1")
+  #getaxdatasize
+  datasize=$(getmaxdatasize "$1")
+  #getchip
+  chip=$(getchip "$1")
+  #use $avrgcc
+  "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000 "$2" -o "$3".bin
+  "$avrgcc" -Os -mmcu="$chip" -ffunction-sections -fdata-sections -Wl,--gc-sections "$3".bin -o "$3".elf
+  rm "$3".bin
+  # use $objcopy
+  "$objcopy" -O ihex -R .eeprom "$3".elf "$3".ihex
+  rm "$3".elf
+}
+
+flash() {
+  ad=$(getdude)
+  if [ -z "$ad" ]; then
+    echo 'Could not find avrdude.' >&2
+    echo 'Is it installed?' >&2
+    exit 1
+  fi
+}
