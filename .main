@@ -67,4 +67,34 @@ flash() {
     echo 'Is it installed?' >&2
     exit 1
   fi
+
+  model=$(getmodel "$1")
+  if [ -z "$model" ]; then
+    echo "Could not find model: $2" >&2
+    echo 'Confirm it can be found in `aardvark list`' >&2
+    exit 1
+  fi
+  chip=$(getchip)
+  baud=$(getbaud)
+
+ #$2 = port
+  if [ -f /dev/"$2" ]; then
+    :
+  else
+    echo "Could not access port: /dev/$2" >&2
+    echo 'Does it exist?' >&2
+    exit 1
+  fi
+
+ #$3 = hexfile
+  if [ -f "$3".ihex ]; then
+    :
+  else
+    echo "Could not find hexfile: $3.ihex" >&2
+    echo 'Does it exist?' >&2
+    echo 'Do you have permission to access it?' >&2
+    exit 1
+  fi
+  
+  avrdude -v -p "$chip" -c arduino -P /dev/"$2" -b "$baud" -D -U flash:w:"3".ihex:i
 }
