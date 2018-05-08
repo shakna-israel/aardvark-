@@ -1,6 +1,9 @@
 build() {
-  compile
-  flash
+  build=$(mktemp -d)
+  echo "Building to $build"
+  compile "$1" "$3" "$build/out"
+  flash "$1" "$2" "$build/out"
+  rm -rf "$build"
 }
 
 compile() {
@@ -52,12 +55,17 @@ compile() {
   #getchip
   chip=$(getchip "$1")
   #use $avrgcc
+  echo "$avrgcc -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu=$chip -DF_CPU=16000000 $2 -o $3.bin"
   "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000 "$2" -o "$3".bin
+  echo "$avrgcc -Os -mmcu=$chip -ffunction-sections -fdata-sections -Wl,--gc-sections $3.bin -o $3.elf"
   "$avrgcc" -Os -mmcu="$chip" -ffunction-sections -fdata-sections -Wl,--gc-sections "$3".bin -o "$3".elf
   rm "$3".bin
   # use $objcopy
+  echo "$objcopy -O ihex -R .eeprom $3.elf $3.ihex"
   "$objcopy" -O ihex -R .eeprom "$3".elf "$3".ihex
   rm "$3".elf
+  echo 'Compiled successfully.'
+  echo $(ls -lah "$3".ihex)
 }
 
 flash() {
@@ -67,4 +75,34 @@ flash() {
     echo 'Is it installed?' >&2
     exit 1
   fi
+
+  model=$(getmodel "$1")
+  if [ -z "$model" ]; then
+    echo "Could not find model: $2" >&2
+    echo 'Confirm it can be found in `aardvark list`' >&2
+    exit 1
+  fi
+  chip=$(getchip "$1")
+  baud=$(getbaud "$1")
+
+ #$2 = port
+  if [ -z /dev/"$2" ]; then
+    echo "Could not access port: /dev/$2" >&2
+    echo 'Does it exist?' >&2
+    exit 1
+  fi
+
+ #$3 = hexfile
+  if [ -f "$3".ihex ]; then
+    :
+  else
+    echo "Could not find hexfile: $3.ihex" >&2
+    echo 'Does it exist?' >&2
+    echo 'Do you have permission to access it?' >&2
+    exit 1
+  fi
+  
+  echo "$ad -v -p $chip -c arduino -P /dev/$2 -b $baud -D -U flash:w:$3.ihex:i"
+  "$ad" -v -p "$chip" -c arduino -P /dev/"$2" -b "$baud" -D -U flash:w:"$3".ihex:i
+  echo 'Flashed successfully.'
 }

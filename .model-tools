@@ -10,22 +10,18 @@ getmodel() {
   fi
 }
 
-getmodeldata() {
-  grep "$1 |" "$root/.models" | awk -F '|' '{print $2}'
-}
-
 getbaud() {
-  getmodeldata "$1" | awk '{print $1}'
+  grep "$1 |" "$root/.models" | awk -F '|' '{print $2}' | head -n1 | awk '{print $1}'
 }
 
 getchip() {
-  getmodeldata "$1" | awk '{print $2}'
+  grep "$1 |" "$root/.models" | awk -F '|' '{print $2}' | head -n1 | awk '{print $2}'
 }
 
 getmaxsize() {
-  getmodeldata "$1" | awk '{print $3}'
+  grep "$1 |" "$root/.models" | awk -F '|' '{print $2}' | head -n1 | awk '{print $3}'
 }
 
 getmaxdatasize() {
-  getmodeldata "$1" | awk '{print $4}'
+  grep "$1 |" "$root/.models" | awk -F '|' '{print $2}' | head -n1 | awk '{print $4}'
 }
