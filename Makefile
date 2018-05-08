@@ -1,5 +1,6 @@
 PREFIX = /usr/local
 
+.PHONY: install
 install:
 	mkdir $(PREFIX)/aardvark
 	cp aardvark $(PREFIX)/aardvark/aardvark
@@ -11,6 +12,7 @@ install:
 	cp LICENSE.md $(PREFIX)/aardvark/LICENSE.md
 	ln -s $(PREFIX)/aardvark/aardvark $(PREFIX)/bin/aardvark
 
+.PHONY: uninstall
 uninstall:
 	rm -rf $(PREFIX)/aardvark
 	rm $(PREFIX)/bin/aardvark
