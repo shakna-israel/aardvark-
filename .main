@@ -50,20 +50,29 @@ compile() {
 
   #getmaxsize
   maxsize=$(getmaxsize "$1")
+
   #getaxdatasize
   datasize=$(getmaxdatasize "$1")
+
   #getchip
   chip=$(getchip "$1")
+
+  # mktemp
+  build=$(mktemp)
+  echo "Building to: $build"
+
   #use $avrgcc
-  echo "$avrgcc -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu=$chip -DF_CPU=16000000 $2 -o $3.bin"
-  "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000 "$2" -o "$3".bin
-  echo "$avrgcc -Os -mmcu=$chip -ffunction-sections -fdata-sections -Wl,--gc-sections $3.bin -o $3.elf"
-  "$avrgcc" -Os -mmcu="$chip" -ffunction-sections -fdata-sections -Wl,--gc-sections "$3".bin -o "$3".elf
-  rm "$3".bin
+  echo "$avrgcc -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu=$chip -DF_CPU=16000000 $2 -o $build/$3.bin"
+  "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000 "$2" -o "$build/$3".bin
+
+  echo "$avrgcc -Os -mmcu=$chip -ffunction-sections -fdata-sections -Wl,--gc-sections $3.bin -o $build/$3.elf"
+  "$avrgcc" -Os -mmcu="$chip" -ffunction-sections -fdata-sections -Wl,--gc-sections "$build/$3".bin -o "$build/$3".elf
+
   # use $objcopy
-  echo "$objcopy -O ihex -R .eeprom $3.elf $3.ihex"
-  "$objcopy" -O ihex -R .eeprom "$3".elf "$3".ihex
-  rm "$3".elf
+  echo "$objcopy -O ihex -R .eeprom $build/$3.elf $3.ihex"
+  "$objcopy" -O ihex -R .eeprom "$build/$3".elf "$3".ihex
+
+  rm -rf "$build"
   echo 'Compiled successfully.'
   echo $(ls -lah "$3".ihex)
 }
@@ -82,6 +91,7 @@ flash() {
     echo 'Confirm it can be found in `aardvark list`' >&2
     exit 1
   fi
+
   chip=$(getchip "$1")
   baud=$(getbaud "$1")
 
