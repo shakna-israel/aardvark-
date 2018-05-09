@@ -10,6 +10,7 @@ install:
 	cp .models $(PREFIX)/aardvark/.models
 	cp .tools $(PREFIX)/aardvark/.tools
 	cp LICENSE.md $(PREFIX)/aardvark/LICENSE.md
+	cp Makefile $(PREFIX)/aardvark/Makefile
 	ln -s $(PREFIX)/aardvark/aardvark $(PREFIX)/bin/aardvark
 
 .PHONY: uninstall
