@@ -2,6 +2,8 @@
 
 set -e
 
+VER='0.0'
+
 # Error Codes
 NOREADLINK=101
 
