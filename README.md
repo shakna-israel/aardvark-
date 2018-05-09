@@ -1,6 +1,10 @@
 # Codename: Aardvark
 
- shell-based program for working with Arduino on the commandline.
+Shell-based program for working with Arduino on the commandline.
+
+![Supports Linux](https://img.shields.io/badge/platform-Linux-green.svg)
+![Supports macOS](https://img.shields.io/badge/platform-macOS-green.svg
+[![GitHub license](https://img.shields.io/github/license/shakna-israel/aardvark-.svg)](https://github.com/shakna-israel/aardvark-/blob/master/LICENSE.md)
 
 ---
 
