@@ -6,7 +6,7 @@ before_install:
 
 script:
   - shellcheck aardvark
-  - shellcheck .help
-  - shellcheck .main
-  - shellcheck .model-tools
-  - shellcheck .tools
+  - shellcheck -s sh .help
+  - shellcheck -s sh .main
+  - shellcheck -s sh .model-tools
+  - shellcheck -s sh .tools
