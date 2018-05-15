@@ -29,8 +29,6 @@ fi
 
 # Aardvark's home directory
 root=$(dirname "$($rlink -f "$0")")
-# Working directory
-wd=$(pwd)
 
 # shellcheck disable=SC1090
 . "$root/.help"
