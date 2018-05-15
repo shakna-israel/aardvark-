@@ -1,0 +1,12 @@
+language: c
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq shellcheck
+
+script:
+  - shellcheck aardvark
+  - shellcheck -s sh .help
+  - shellcheck -s sh .main
+  - shellcheck -s sh .model-tools
+  - shellcheck -s sh .tools
