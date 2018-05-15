@@ -11,13 +11,13 @@ NOREADLINK=101
 # It has to be in the main file for obvious reasons
 
 # macos compatibilities
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   rlink='greadlink'
 else
   rlink='readlink'
 fi
 
-# check readlink accessible 
+# check readlink accessible
 if "$rlink" --help | grep -q 'readlink'; then
   :
 else
@@ -28,20 +28,20 @@ else
 fi
 
 # Aardvark's home directory
-root=$(dirname $($rlink -f $0))
+root=$(dirname "$($rlink -f "$0")")
 # Working directory
 wd=$(pwd)
 
 . "$root/.help"
 
-if [ -z "$1" ] || [ "$1" == '--help' ] || [ "$1" == '-h' ]; then
+if [ -z "$1" ] || [ "$1" = '--help' ] || [ "$1" = '-h' ]; then
   help
   exit 0
 fi
 
 . "$root/.model-tools"
 
-if [ "$1" == 'list' ]; then
+if [ "$1" = 'list' ]; then
   listmodel
   exit 0
 fi
@@ -49,17 +49,17 @@ fi
 . "$root/.tools"
 . "$root/.main"
 
-if [ "$1" == 'build' ]; then
+if [ "$1" = 'build' ]; then
   build "$2" "$3" "$4"
   exit 0
 fi
 
-if [ "$1" == 'compile' ]; then
+if [ "$1" = 'compile' ]; then
   compile "$2" "$3" "$4"
   exit 0
 fi
 
-if [ "$1" == 'flash' ]; then
+if [ "$1" = 'flash' ]; then
   flash "$2" "$3" "$4"
   exit 0
 fi

@@ -71,7 +71,7 @@ compile() {
   rm "$3".bin
   rm "$3".elf
   echo 'Compiled successfully.'
-  echo $(ls -lah "$3".ihex)
+  ls -lah "$3".ihex
 }
 
 flash() {
