@@ -2,6 +2,7 @@
 
 set -e
 
+# shellcheck disable=SC3024
 VER='0.1'
 
 # Error Codes
