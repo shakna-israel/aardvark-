@@ -32,6 +32,7 @@ root=$(dirname "$($rlink -f "$0")")
 # Working directory
 wd=$(pwd)
 
+# shellcheck disable=SC1090
 . "$root/.help"
 
 if [ -z "$1" ] || [ "$1" = '--help' ] || [ "$1" = '-h' ]; then
@@ -39,6 +40,7 @@ if [ -z "$1" ] || [ "$1" = '--help' ] || [ "$1" = '-h' ]; then
   exit 0
 fi
 
+# shellcheck disable=SC1090
 . "$root/.model-tools"
 
 if [ "$1" = 'list' ]; then
@@ -46,7 +48,9 @@ if [ "$1" = 'list' ]; then
   exit 0
 fi
 
+# shellcheck disable=SC1090
 . "$root/.tools"
+# shellcheck disable=SC1090
 . "$root/.main"
 
 if [ "$1" = 'build' ]; then
@@ -65,5 +69,6 @@ if [ "$1" = 'flash' ]; then
 fi
 
 echo "Did not understand input: $1" >&2
+# shellcheck disable=SC2016
 echo 'Try `aardvark --help`' >&2
 exit 1

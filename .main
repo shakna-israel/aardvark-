@@ -10,6 +10,7 @@ compile() {
   model=$(getmodel "$1")
   if [ -z "$model" ]; then
     echo "Could not find model: $2" >&2
+    # shellcheck disable=SC2016
     echo 'Confirm it can be found in `aardvark list`' >&2
     exit 1
   fi
@@ -85,6 +86,7 @@ flash() {
   model=$(getmodel "$1")
   if [ -z "$model" ]; then
     echo "Could not find model: $2" >&2
+    # shellcheck disable=SC2016
     echo 'Confirm it can be found in `aardvark list`' >&2
     exit 1
   fi
@@ -93,7 +95,7 @@ flash() {
   baud=$(getbaud "$1")
 
  #$2 = port
-  if [ -z /dev/"$2" ]; then
+  if [ -e /dev/"$2" ]; then
     echo "Could not access port: /dev/$2" >&2
     echo 'Does it exist?' >&2
     exit 1
