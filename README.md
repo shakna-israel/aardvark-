@@ -7,6 +7,7 @@ Shell-based program for working with Arduino on the commandline.
 [![Supports macOS](https://img.shields.io/badge/platform-macOS-green.svg)](#)
 [![Partially supports Windows](https://img.shields.io/badge/platform-windows-yellow.svg)](#)
 [![GitHub license](https://img.shields.io/github/license/shakna-israel/aardvark-.svg)](https://github.com/shakna-israel/aardvark-/blob/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/shakna-israel/aardvark-.svg?branch=master)](https://travis-ci.org/shakna-israel/aardvark-)
 
 ---
 
