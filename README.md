@@ -33,7 +33,7 @@ It does not yet:
 
 # Install
 
-Currently, Codename: Aardvark runs on macOS and Linux, with [partial support for Windows](#Windows).
+Currently, Codename: Aardvark runs on macOS and Linux, with [partial support for Windows](#windows).
 
 ## Dependencies
 
