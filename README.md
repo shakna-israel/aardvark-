@@ -2,9 +2,9 @@
 
 Shell-based program for working with Arduino on the commandline.
 
-![Supports 46 boards](https://img.shields.io/badge/Boards-46-green.svg)
-![Supports Linux](https://img.shields.io/badge/platform-Linux-green.svg)
-![Supports macOS](https://img.shields.io/badge/platform-macOS-green.svg)
+[![Supports 46 boards](https://img.shields.io/badge/Boards-46-green.svg)](.models)
+[![Supports Linux](https://img.shields.io/badge/platform-Linux-green.svg)](#)
+[![Supports macOS](https://img.shields.io/badge/platform-macOS-green.svg)](#)
 [![GitHub license](https://img.shields.io/github/license/shakna-israel/aardvark-.svg)](https://github.com/shakna-israel/aardvark-/blob/master/LICENSE.md)
 
 ---
