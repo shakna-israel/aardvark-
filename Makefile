@@ -9,6 +9,7 @@ install:
 	cp .model-tools $(PREFIX)/aardvark/.model-tools
 	cp .models $(PREFIX)/aardvark/.models
 	cp .tools $(PREFIX)/aardvark/.tools
+	cp .header $(PREFIX)/aardvark/.header
 	cp LICENSE.md $(PREFIX)/aardvark/LICENSE.md
 	cp Makefile $(PREFIX)/aardvark/Makefile
 	ln -s $(PREFIX)/aardvark/aardvark $(PREFIX)/bin/aardvark

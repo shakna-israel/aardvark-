@@ -2,6 +2,7 @@ help() {
   echo "Help - Aardvark v$VER"
   echo '===================='
   echo ''
+  echo 'aardvark [--version | -v] | Show current version number'
   echo 'aardvark list | Show supported devices.'
   echo 'aardvark [--help | -h] | Show this message.'
   echo 'aardvark build DEVICE PORT FILE | Compile & upload a file to a device'
