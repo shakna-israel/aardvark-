@@ -1,0 +1,24 @@
+#ifndef AARDVARK_CORE
+
+#define F_CPU __F_CPU__
+#define BAUD __BAUD__
+
+#include <util/setbaud.h>
+
+void _uart_init(void) {
+}
+
+void _uart_putchar(char c) {
+}
+
+char _uart_getchar(void) {
+}
+
+FILE _uart_out;
+FILE _uart_in;
+
+void init_serial(void) {
+}
+
+#define AARDVARK_CORE
+#endif

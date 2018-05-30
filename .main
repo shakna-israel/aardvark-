@@ -6,7 +6,23 @@ build() {
   rm -rf "$build"
 }
 
+mkheader() {
+  if [ -d "$1" ]; then
+    cp "$root/.header" "$1"/core.h
+    #TODO: Modify core.h to define macros
+  else
+    echo 'Could not write header file. Temporary directory does not exist.' >&2
+    echo 'This is probably a problem with Aardvark.' >&2
+    exit 1
+  fi
+}
+
 compile() {
+
+  #TODO: Needs to compile in a tmp directory
+  # So mkheader can work
+  # and we don't risk overwriting user files
+
   model=$(getmodel "$1")
   if [ -z "$model" ]; then
     echo "Could not find model: $2" >&2
