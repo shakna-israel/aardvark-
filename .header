@@ -45,5 +45,21 @@ void init_serial(void) {
 }
 #endif
 
+#ifdef AARDVARK_CLOCK
+  #define __DELAY_ROUND_CLOSEST__
+  /* We define the rounding before including the delay library,
+     so that we don't always round up to the nearest integer.
+     Though this is unexpected in AVR-world, it's expected in Arduino-world.
+  */
+  #include <util/delay.h>
+
+  void delay(const double millis) {
+    /* AVR libc requires that millis be a known compile-time constant,
+       and that compiler optimisation be used.
+    */
+    _delay_ms(millis);
+  }
+#endif
+
 #define AARDVARK_CORE
 #endif

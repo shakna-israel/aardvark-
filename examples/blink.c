@@ -1,5 +1,12 @@
 #include <avr/io.h>
-#include <util/delay.h>
+
+/*
+  The below says to use Aardvark's core wrappers,
+  and to enable the CLOCK library, where we can
+  find `delay` defined.
+*/
+#define ARRDVARK_CLOCK
+#include "core.h"
 
 int main(void) {
   /*
@@ -12,12 +19,12 @@ int main(void) {
       Bitshift the register to on
     */
     PORTB |= _BV(PORTB5);
-    _delay_ms(1000);
+    delay(1000);
     /*
       Bitshift back the other way.
     */
     PORTB &= ~_BV(PORTB5);
-    _delay_ms(1000);
+    delay(1000);
   }
 
   return 0;
