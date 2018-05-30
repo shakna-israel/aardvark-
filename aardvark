@@ -2,8 +2,7 @@
 
 set -e
 
-# shellcheck disable=SC2034
-VER='0.1'
+VER='0.2-alpha'
 
 # Error Codes
 NOREADLINK=101
@@ -33,6 +32,11 @@ root=$(dirname "$($rlink -f "$0")")
 
 # shellcheck disable=SC1090
 . "$root/.help"
+
+if [ "$1" = '-v' ] || [ "$1" = '--help' ]; then
+  echo "$VER"
+  exit 0
+fi
 
 if [ -z "$1" ] || [ "$1" = '--help' ] || [ "$1" = '-h' ]; then
   help

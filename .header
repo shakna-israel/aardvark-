@@ -3,6 +3,7 @@
 #define F_CPU __F_CPU__
 #define BAUD __BAUD__
 
+#ifdef AARDVARK_SERIAL
 #include <util/setbaud.h>
 
 void _uart_init(void) {
@@ -19,6 +20,7 @@ FILE _uart_in;
 
 void init_serial(void) {
 }
+#endif
 
 #define AARDVARK_CORE
 #endif
