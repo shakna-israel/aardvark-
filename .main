@@ -77,8 +77,8 @@ compile() {
   baud=$(getbaud "$1")
 
   #use $avrgcc
-  echo "$avrgcc -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu=$chip -DF_CPU=16000000 -DBAUD=$baud $2 -o $3.bin"
-  "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000 -DBAUD="$baud" "$2" -o "$3".bin
+  echo "$avrgcc -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu=$chip -DF_CPU=16000000UL -DBAUD=$baud $2 -o $3.bin"
+  "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000UL -DBAUD="$baud" "$2" -o "$3".bin
 
   echo "$avrgcc -Os -mmcu=$chip -ffunction-sections -fdata-sections -Wl,--gc-sections $3.bin -o $3.elf"
   "$avrgcc" -Os -mmcu="$chip" -ffunction-sections -fdata-sections -Wl,--gc-sections "$3".bin -o "$3".elf
