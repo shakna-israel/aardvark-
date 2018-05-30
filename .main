@@ -9,7 +9,6 @@ build() {
 mkheader() {
   if [ -d "$1" ]; then
     cp "$root/.header" "$1"/core.h
-    #TODO: Modify core.h to define macros
   else
     echo 'Could not write header file. Temporary directory does not exist.' >&2
     echo 'This is probably a problem with Aardvark.' >&2
@@ -74,9 +73,12 @@ compile() {
   #getchip
   chip=$(getchip "$1")
 
+  #getbaud
+  baud=$(getbaud "$1")
+
   #use $avrgcc
-  echo "$avrgcc -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu=$chip -DF_CPU=16000000 $2 -o $3.bin"
-  "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000 "$2" -o "$3".bin
+  echo "$avrgcc -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu=$chip -DF_CPU=16000000 -DBAUD=$baud $2 -o $3.bin"
+  "$avrgcc" -c -std=gnu99 -Os -Wall -ffunction-sections -fdata-sections -mmcu="$chip" -DF_CPU=16000000 -DBAUD="$baud" "$2" -o "$3".bin
 
   echo "$avrgcc -Os -mmcu=$chip -ffunction-sections -fdata-sections -Wl,--gc-sections $3.bin -o $3.elf"
   "$avrgcc" -Os -mmcu="$chip" -ffunction-sections -fdata-sections -Wl,--gc-sections "$3".bin -o "$3".elf

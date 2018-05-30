@@ -1,8 +1,5 @@
 #ifndef AARDVARK_CORE
 
-#define F_CPU __F_CPU__
-#define BAUD __BAUD__
-
 #ifdef AARDVARK_SERIAL
 #include <util/setbaud.h>
 
@@ -19,6 +16,9 @@ FILE _uart_out;
 FILE _uart_in;
 
 void init_serial(void) {
+  _uart_init();
+  stdout = &_uart_out;
+  stdin = &_uart_in;
 }
 #endif
 
