@@ -2,6 +2,8 @@
 
 #ifdef AARDVARK_SERIAL
 #include <util/setbaud.h>
+#include <avr/io.h>
+#include <stdio.h>
 
 void _uart_init(void) {
   UBRR0H = UBRRH_VALUE;
